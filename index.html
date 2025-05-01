@@ -7,7 +7,8 @@
     body {
       margin: 0;
       padding: 0;
-      background: #ffe6ec;
+      background: url('https://i.imgur.com/lWQfR8Z.jpeg') no-repeat center center fixed;
+      background-size: cover;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
@@ -69,6 +70,28 @@
       font-size: 1.1em;
       color: #c9184a;
     }
+
+    .botao-amor {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .botao-amor:hover {
+      background-color: #e60045;
+    }
+
+    #mensagemEspecial {
+      color: #b0003a;
+      font-size: 1.2em;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
@@ -76,6 +99,8 @@
   <h1>Te Amo Lorena ❤️</h1>
   <p>Esse coração é só uma forma simples de mostrar o quanto você é especial pra mim!</p>
   <div id="timer"></div>
+  <button onclick="mostrarMensagem()" class="botao-amor">Clique aqui, meu amor 💌</button>
+  <p id="mensagemEspecial" style="display:none;"></p>
 
   <script>
     function updateTimer() {
@@ -93,6 +118,19 @@
       const text = `Estamos juntos há ${years} anos, ${months % 12} meses, ${days % 30} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos ❤️`;
 
       document.getElementById("timer").textContent = text;
+    }
+
+    function mostrarMensagem() {
+      const mensagens = [
+        "Você é o amor da minha vida 💖",
+        "Pensei em você o dia todo 😍",
+        "Quero passar todos os dias ao seu lado ❤️",
+        "Você é meu lugar favorito no mundo 🌍",
+        "Te amo mais do que ontem, menos do que amanhã 💘"
+      ];
+      const random = Math.floor(Math.random() * mensagens.length);
+      document.getElementById('mensagemEspecial').textContent = mensagens[random];
+      document.getElementById('mensagemEspecial').style.display = 'block';
     }
 
     updateTimer();

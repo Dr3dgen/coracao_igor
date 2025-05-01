@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Meu Amor ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6ec;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .heart {
+      width: 100px;
+      height: 90px;
+      position: relative;
+      animation: pulse 1s infinite;
+      margin-bottom: 30px;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 90px;
+      background: red;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .heart::before {
+      left: 100px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .heart::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    h1 {
+      color: #d6336c;
+      font-size: 2em;
+    }
+
+    p {
+      color: #6c757d;
+      font-size: 1.2em;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart"></div>
+  <h1>Te Amo ❤️</h1>
+  <p>Esse coração é só uma forma simples de mostrar o quanto você é especial pra mim!</p>
+</body>
+</html>

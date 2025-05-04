@@ -103,21 +103,34 @@
 
   <script>
     function updateTimer() {
-      const startDate = new Date("2025-02-09T14:31:00");
-      const now = new Date();
-      const diff = now - startDate;
+  const startDate = new Date("2025-02-09T14:31:00");
+  const now = new Date();
 
-      const seconds = Math.floor(diff / 1000) % 60;
-      const minutes = Math.floor(diff / 1000 / 60) % 60;
-      const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
-      const days = Math.floor(diff / 1000 / 60 / 60 / 24);
-      const months = Math.floor(days / 30.44);
-      const years = Math.floor(days / 365.25);
+  let years = now.getFullYear() - startDate.getFullYear();
+  let months = now.getMonth() - startDate.getMonth();
+  let days = now.getDate() - startDate.getDate();
 
-      const text = `Estamos juntos há ${years} anos, ${months % 12} meses, ${days % 30} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos ❤️`;
+  if (days < 0) {
+    months -= 1;
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += prevMonth.getDate();
+  }
 
-      document.getElementById("timer").textContent = text;
-    }
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  const diff = now - startDate;
+  const seconds = Math.floor(diff / 1000) % 60;
+  const minutes = Math.floor(diff / 1000 / 60) % 60;
+  const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+
+  const text = `Estamos juntos há ${years} anos, ${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos ❤️`;
+
+  document.getElementById("timer").textContent = text;
+}
+
 
     function mostrarMensagem() {
       const mensagens = [

@@ -101,10 +101,8 @@
   <button onclick="mostrarMensagem()" class="botao-amor">Clique aqui, meu amor 💌</button>
   <p id="mensagemEspecial" style="display:none;"></p>
 
-  <audio autoplay loop>
-    <source src="little-things.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
+  <!-- Elemento de áudio (sem autoplay) -->
+  <audio id="bg-music" src="little-things.mp3" loop></audio>
 
   <script>
     function updateTimer() {
@@ -137,6 +135,11 @@
     }
 
     function mostrarMensagem() {
+      // Toca a música
+      const audio = document.getElementById("bg-music");
+      audio.play();
+
+      // Exibe uma mensagem aleatória
       const mensagens = [
         "Você é o amor da minha vida 💖",
         "Pensei em você o dia todo 😍",

@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Meu Amor ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6ec;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
 
+    .heart {
+      position: relative;
+      width: 100px;
+      height: 90px;
+      margin-bottom: 30px;
+      animation: pulse 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 80px;
+      background: red;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .heart::before {
+      left: 50px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .heart::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    h1 {
+      color: #d6336c;
+      font-size: 2em;
+    }
+
+    p {
+      color: #6c757d;
+      font-size: 1.2em;
+      max-width: 300px;
+    }
+
+    #timer {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #c9184a;
+    }
+
+    .botao-amor {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .botao-amor:hover {
+      background-color: #e60045;
+    }
+
+    #mensagemEspecial {
+      color: #b0003a;
+      font-size: 1.2em;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart"></div>
+  <h1>Te Amo Lorena ❤️</h1>
+  <p>Esse coração é só uma forma simples de mostrar o quanto você é especial pra mim!</p>
+  <div id="timer"></div>
+  <button onclick="mostrarMensagem()" class="botao-amor">Clique aqui, meu amor 💌</button>
+  <p id="mensagemEspecial" style="display:none;"></p>
+
+  <audio autoplay loop>
+    <source src="little-things.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    function updateTimer() {
+      const startDate = new Date("2025-02-09T14:31:00");
+      const now = new Date();
+
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+
+      if (days < 0) {
+        months -= 1;
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+      }
+
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+
+      const diff = now - startDate;
+      const seconds = Math.floor(diff / 1000) % 60;
+      const minutes = Math.floor(diff / 1000 / 60) % 60;
+      const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+
+      const text = `Estamos juntos há ${years} anos, ${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos ❤️`;
+
+      document.getElementById("timer").textContent = text;
+    }
+
+    function mostrarMensagem() {
+      const mensagens = [
+        "Você é o amor da minha vida 💖",
+        "Pensei em você o dia todo 😍",
+        "Quero passar todos os dias ao seu lado ❤️",
+        "Você é meu lugar favorito no mundo 🌍",
+        "Te amo mais do que ontem, menos do que amanhã 💘"
+      ];
+      const random = Math.floor(Math.random() * mensagens.length);
+      document.getElementById('mensagemEspecial').textContent = mensagens[random];
+      document.getElementById('mensagemEspecial').style.display = 'block';
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>

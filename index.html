@@ -70,7 +70,7 @@
       color: #c9184a;
     }
 
-    .botao-amor {
+    .botao-amor, .botao-musica {
       margin-top: 20px;
       padding: 10px 20px;
       font-size: 1em;
@@ -82,7 +82,7 @@
       transition: background-color 0.3s;
     }
 
-    .botao-amor:hover {
+    .botao-amor:hover, .botao-musica:hover {
       background-color: #e60045;
     }
 
@@ -99,12 +99,13 @@
   <p>Esse coração é só uma forma simples de mostrar o quanto você é especial pra mim!</p>
   <div id="timer"></div>
   <button onclick="mostrarMensagem()" class="botao-amor">Clique aqui, meu amor 💌</button>
+  <button onclick="tocarMusica()" class="botao-musica">Tocar música 🎵</button>
   <p id="mensagemEspecial" style="display:none;"></p>
 
-  <audio autoplay loop>
-  <source src="little-things.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
-</audio>
+  <audio id="audioPlayer">
+    <source src="little-things.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
 
   <script>
     function updateTimer() {
@@ -147,6 +148,12 @@
       const random = Math.floor(Math.random() * mensagens.length);
       document.getElementById('mensagemEspecial').textContent = mensagens[random];
       document.getElementById('mensagemEspecial').style.display = 'block';
+    }
+
+    function tocarMusica() {
+      const audio = document.getElementById("audioPlayer");
+      audio.play();
+      audio.loop = true;
     }
 
     updateTimer();

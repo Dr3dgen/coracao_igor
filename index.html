@@ -99,7 +99,8 @@
   <p>Esse coração é só uma forma simples de mostrar o quanto você é especial pra mim!</p>
   <div id="timer"></div>
   <button onclick="mostrarMensagem()" class="botao-amor">Clique aqui, meu amor 💌</button>
-  <button onclick="tocarMusica()" class="botao-musica">Tocar música 🎵</button>
+  <button onclick="document.getElementById('bg-music').play()">🎵 Tocar música</button>
+<audio id="bg-music" src="little-things.mp3"></audio>
   <p id="mensagemEspecial" style="display:none;"></p>
 
   <audio id="audioPlayer">
